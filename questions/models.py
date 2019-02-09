@@ -19,6 +19,12 @@ class VideoInterview(models.Model):
     def __str__(self):
         return self.title
 
+    def get_job_seekers(self):
+        return ',\n'.join([p.name for p in self.job_seekers.all()])
+
+    def get_questions(self):
+        return ',\n'.join([p.title for p in self.questions.all()])
+
 
 class Question(models.Model):
     title = models.CharField(
